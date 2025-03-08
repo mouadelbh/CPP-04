@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-bouh <mel-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 03:28:12 by mel-bouh          #+#    #+#             */
-/*   Updated: 2024/12/21 06:07:50 by mel-bouh         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:29:46 by mel-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.hpp"
+#include "AAnimal.hpp"
 
 AAnimal::AAnimal()
 {
+	type = "Animal";
 	std::cout << "Animal Default constructor called" << std::endl;
+}
+
+AAnimal::AAnimal(std::string type)
+{
+	this->type = type;
+	std::cout << "Animal " << type << " is constructed" << std::endl;
 }
 
 AAnimal::~AAnimal()
@@ -30,9 +37,9 @@ AAnimal::AAnimal(const AAnimal &src)
 
 AAnimal &AAnimal::operator=(const AAnimal &src)
 {
-	std::cout << "Animal Assignation operator called" << std::endl;
 	if (this != &src)
 	{
+		std::cout << "Animal Assignation operator called" << std::endl;
 		type = src.type;
 	}
 	return *this;

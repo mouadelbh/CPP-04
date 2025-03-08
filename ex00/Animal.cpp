@@ -6,16 +6,22 @@
 /*   By: mel-bouh <mel-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 03:28:12 by mel-bouh          #+#    #+#             */
-/*   Updated: 2024/12/21 06:06:15 by mel-bouh         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:28:57 by mel-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.hpp"
+#include "Animal.hpp"
 
 Animal::Animal()
 {
 	type = "Animal";
 	std::cout << "Animal Default constructor called" << std::endl;
+}
+
+Animal::Animal(std::string type)
+{
+	this->type = type;
+	std::cout << "Animal " << type << " is constructed" << std::endl;
 }
 
 Animal::~Animal()
@@ -31,9 +37,9 @@ Animal::Animal(const Animal &src)
 
 Animal &Animal::operator=(const Animal &src)
 {
-	std::cout << "Animal Assignation operator called" << std::endl;
 	if (this != &src)
 	{
+		std::cout << "Animal Assignation operator called" << std::endl;
 		type = src.type;
 	}
 	return *this;

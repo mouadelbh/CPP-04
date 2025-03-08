@@ -6,16 +6,15 @@
 /*   By: mel-bouh <mel-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 03:35:29 by mel-bouh          #+#    #+#             */
-/*   Updated: 2024/12/21 05:45:48 by mel-bouh         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:12:33 by mel-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.hpp"
 
-Dog::Dog()
+Dog::Dog() : Animal("Dog")
 {
-	type = "Dog";
-	brain = new Brain();
+	brain = new Brain("Humpf Humpf");
 	std::cout << "Dog Default constructor called" << std::endl;
 }
 
@@ -27,22 +26,35 @@ Dog::~Dog()
 
 Dog::Dog(const Dog &src)
 {
+	brain = NULL;
 	std::cout << "Dog Copy constructor called" << std::endl;
 	*this = src;
 }
 
 Dog &Dog::operator=(const Dog &src)
 {
-	std::cout << "Dog Assignation operator called" << std::endl;
 	if (this != &src)
 	{
+		std::cout << "Dog Assignation operator called" << std::endl;
+		if (brain)
+			delete this->brain;
 		type = src.type;
+		this->brain = new Brain(*src.brain);
 	}
-	brain = new Brain();
 	return *this;
 }
 
-void Dog::makeSound() const
+void	Dog::makeSound() const
 {
 	std::cout << "Woof Woof" << std::endl;
+}
+
+void	Dog::setIdea(const std::string &idea)
+{
+	brain->setIdea(idea);
+}
+
+std::string	Dog::getIdea(int i) const
+{
+	return brain->getIdea(i);
 }

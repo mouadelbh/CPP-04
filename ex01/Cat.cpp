@@ -6,16 +6,15 @@
 /*   By: mel-bouh <mel-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 03:33:22 by mel-bouh          #+#    #+#             */
-/*   Updated: 2024/12/21 06:05:47 by mel-bouh         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:12:55 by mel-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.hpp"
 
-Cat::Cat()
+Cat::Cat() : Animal("Cat")
 {
-	type = "Cat";
-	brain = new Brain();
+	brain = new Brain("Miw Miw");
 	std::cout << "Cat Default constructor called" << std::endl;
 }
 
@@ -28,22 +27,34 @@ Cat::~Cat()
 Cat::Cat(const Cat &src)
 {
 	std::cout << "Cat Copy constructor called" << std::endl;
+	brain = NULL;
 	*this = src;
 }
 
 Cat &Cat::operator=(const Cat &src)
 {
-	std::cout << "Cat Assignation operator called" << std::endl;
 	if (this != &src)
 	{
+		std::cout << "Cat Assignation operator called" << std::endl;
+		if (brain)
+			delete this->brain;
 		type = src.type;
+		this->brain = new Brain(*src.brain);
 	}
-	brain = new Brain();
 	return *this;
 }
 
-void Cat::makeSound() const
+void	Cat::setIdea(const std::string &idea)
+{
+	brain->setIdea(idea);
+}
+
+void	Cat::makeSound() const
 {
 	std::cout << "Meow Meow" << std::endl;
 }
 
+std::string	Cat::getIdea(int i) const
+{
+	return brain->getIdea(i);
+}

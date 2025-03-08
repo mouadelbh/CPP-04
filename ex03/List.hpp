@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   List.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-bouh <mel-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 04:18:16 by mel-bouh          #+#    #+#             */
-/*   Updated: 2025/03/07 17:14:56 by mel-bouh         ###   ########.fr       */
+/*   Created: 2025/03/07 22:15:25 by mel-bouh          #+#    #+#             */
+/*   Updated: 2025/03/07 22:17:50 by mel-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
+#include "AMateria.hpp"
 
-class WrongAnimal
+struct Node
 {
-	protected:
-		std::string type;
+	AMateria *m;
+	Node *next;
+};
+
+class List
+{
+	private:
+		Node *head;
 	public:
-		WrongAnimal();
-		WrongAnimal(std::string type);
-		WrongAnimal(const WrongAnimal &src);
-		WrongAnimal &operator=(const WrongAnimal &src);
-		~WrongAnimal();
-		std::string getType() const;
-		void makeSound() const;
+		List();
+		List(const List &src);
+		List	&operator=(const List &src);
+		~List();
+		void	push_front(AMateria *m);
+		void	pop();
+		void	clear();
+		AMateria	*get(int idx);
 };

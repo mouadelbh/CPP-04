@@ -6,7 +6,7 @@
 /*   By: mel-bouh <mel-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 04:18:49 by mel-bouh          #+#    #+#             */
-/*   Updated: 2024/12/21 06:06:15 by mel-bouh         ###   ########.fr       */
+/*   Updated: 2025/03/07 17:15:54 by mel-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ WrongAnimal::WrongAnimal()
 {
 	type = "WrongAnimal";
 	std::cout << "WrongAnimal Default constructor called" << std::endl;
+}
+
+WrongAnimal::WrongAnimal(std::string type)
+{
+	this->type = type;
+	std::cout << "WrongAnimal " << type << " is created" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal()
@@ -31,9 +37,9 @@ WrongAnimal::WrongAnimal(const WrongAnimal &src)
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &src)
 {
-	std::cout << "WrongAnimal Assignation operator called" << std::endl;
 	if (this != &src)
 	{
+		std::cout << "WrongAnimal Assignation operator called" << std::endl;
 		type = src.type;
 	}
 	return *this;
